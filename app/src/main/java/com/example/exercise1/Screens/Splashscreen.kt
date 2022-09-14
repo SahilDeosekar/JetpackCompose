@@ -34,7 +34,7 @@ fun DefaultPreview() {
 }
 
 @Composable
-fun columnpreview(name: String){
+fun Splash(name: String){
     Box(
         modifier = Modifier
             .fillMaxSize()

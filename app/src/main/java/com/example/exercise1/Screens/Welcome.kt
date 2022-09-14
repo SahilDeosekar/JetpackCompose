@@ -16,8 +16,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.exercise1.convertToArray
-import com.example.exercise1.data.Products
-import com.example.exercise1.data.data
 import com.example.exercise1.data.user
 import com.example.exercise1.index
 import com.example.exercise1.productList

@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.exercise1.convertToObject
+import com.example.exercise1.data.saveData
 import com.example.exercise1.data.user
 import com.example.exercise1.validate
 
@@ -40,10 +41,13 @@ fun Loginpage(onClickLambda: ()->Unit={}) {
         DrawRowsPassword(list = passwordlist)
         Button(onClick = {
             convertToObject()
-            if(validate(user.userName,user.password)) onClickLambda()
+            if(validate(user.userName,user.password)) {
+                onClickLambda()
+                saveData(mContext,user.userName,user.password)}
             else mToast(mContext)}) {
             Text(text = "SignIn")
         }
+
 
     }
 }
