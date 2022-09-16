@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.exercise1.data.loadData
 import com.example.exercise1.data.user
+import com.example.exercise1.readJsonFromAssets
 import kotlinx.coroutines.delay
 
 @Composable
@@ -37,18 +38,19 @@ fun Splash(name: String, navController: NavController, context: Context) {
         contentAlignment = Alignment.Center,
     )
     {
-        loadData(context)
         Greeting(name)
         LaunchedEffect(key1 = true)
         {
             delay(1000L)
+            loadData(context)
+            readJsonFromAssets(context)
             if (user.userName.isEmpty() && user.password.isEmpty()) {
-                navController.navigate(route = Screen.Loginpage.route){
-                    popUpTo(Screen.Splash.route){inclusive=true}
+                navController.navigate(route = Screen.Loginpage.route) {
+                    popUpTo(Screen.Splash.route) { inclusive = true }
                 }
             } else {
-                navController.navigate(route = Screen.Welcome.route){
-                    popUpTo(Screen.Splash.route){inclusive=true}
+                navController.navigate(route = Screen.Welcome.route) {
+                    popUpTo(Screen.Splash.route) { inclusive = true }
                 }
             }
         }

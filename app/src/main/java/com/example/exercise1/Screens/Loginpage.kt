@@ -42,51 +42,57 @@ fun Loginpage(navController: NavController, context: Context) {
         DrawRowsPassword(list = passwordlist)
         Button(onClick = {
             convertToObject()
-            if(validate(user.userName,user.password)) {
-                saveData(mContext,user.userName,user.password)
+            if (validate(user.userName, user.password)) {
+                saveData(mContext, user.userName, user.password)
                 navController.navigate(route = Screen.Welcome.route)
-            }
-            else mToast(mContext)}) {
+            } else mToast(mContext)
+        }) {
             Text(text = "SignIn")
         }
 
 
     }
 }
-private fun mToast(context: Context){
+
+private fun mToast(context: Context) {
     Toast.makeText(context, "Signin Failed", Toast.LENGTH_LONG).show()
 }
 
 @Composable
-fun DrawRowsUsername(list: List<String>){
-    Row(modifier = Modifier,
-    verticalAlignment = Alignment.CenterVertically,
-    horizontalArrangement = Arrangement.Center)
+fun DrawRowsUsername(list: List<String>) {
+    Row(
+        modifier = Modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    )
     {
-        Column(modifier = Modifier.padding(10.dp)) { Text(text=list[0])}
-        Column(modifier= Modifier.padding(10.dp)) {
-            val input = remember { mutableStateOf("")}
+        Column(modifier = Modifier.padding(10.dp)) { Text(text = list[0]) }
+        Column(modifier = Modifier.padding(10.dp)) {
+            val input = remember { mutableStateOf("") }
 
-            TextField(value = input.value, onValueChange = {input.value=it},
-            label = { Text(text = list[1])})
-            user.userName= input.value
+            TextField(value = input.value, onValueChange = { input.value = it },
+                label = { Text(text = list[1]) })
+            user.userName = input.value
         }
     }
 }
+
 @Composable
-fun DrawRowsPassword(list: List<String>){
-    Row(modifier = Modifier,
+fun DrawRowsPassword(list: List<String>) {
+    Row(
+        modifier = Modifier,
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center)
+        horizontalArrangement = Arrangement.Center
+    )
     {
-        Column(modifier = Modifier.padding(10.dp)) { Text(text=list[0])}
-        Column(modifier= Modifier.padding(10.dp)) {
-            var input = remember { mutableStateOf("")}
+        Column(modifier = Modifier.padding(10.dp)) { Text(text = list[0]) }
+        Column(modifier = Modifier.padding(10.dp)) {
+            var input = remember { mutableStateOf("") }
             var passwordVisible by remember { mutableStateOf(false) }
 
             TextField(
-                value = input.value, onValueChange = {input.value=it},
-                label = { Text(text = list[1])},
+                value = input.value, onValueChange = { input.value = it },
+                label = { Text(text = list[1]) },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 trailingIcon = {
@@ -95,10 +101,10 @@ fun DrawRowsPassword(list: List<String>){
                     else Icons.Filled.VisibilityOff
                     val description = if (passwordVisible) "Hide password" else "Show password"
 
-                    IconButton(onClick = {passwordVisible = !passwordVisible}) {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(imageVector = image, description)
                     }
-                    })
+                })
             user.password = input.value
         }
     }
