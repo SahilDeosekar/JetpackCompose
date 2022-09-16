@@ -1,5 +1,6 @@
 package com.example.exercise1.Screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,14 +16,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.exercise1.convertToArray
 import com.example.exercise1.data.user
 import com.example.exercise1.index
 import com.example.exercise1.productList
 
-@Preview(showBackground = true)
 @Composable
-fun Welcome(){
+fun Welcome(navController: NavController, context: Context){
     Surface(modifier = Modifier
         .fillMaxSize()) {
         Column(
@@ -60,6 +61,7 @@ fun DrawHomeRows(){
 
 @Composable //Generates Each individual card in of each column in a row
 fun DrawHomeEachColumn(){
+    index++
     Card(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(8.dp)) {
         Column(
             modifier = Modifier.height(200.dp),
@@ -73,7 +75,6 @@ fun DrawHomeEachColumn(){
             Text(text = productList[index].productName)
         }
     }
-    index++
 }
 
 

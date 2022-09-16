@@ -23,7 +23,7 @@ fun validate(inputName: String, inputPassword:String):Boolean
     return (inputName== apihelper.userName && inputPassword== apihelper.password)
 }
 
-var index = 0
+var index = -1
 lateinit var productList: Array<Products>
 fun convertToArray(){
     var gson = Gson()

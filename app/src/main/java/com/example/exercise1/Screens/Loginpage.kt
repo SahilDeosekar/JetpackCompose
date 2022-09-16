@@ -18,13 +18,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.exercise1.convertToObject
 import com.example.exercise1.data.saveData
 import com.example.exercise1.data.user
 import com.example.exercise1.validate
 
 @Composable
-fun Loginpage(onClickLambda: ()->Unit={}) {
+fun Loginpage(navController: NavController, context: Context) {
     val usernamelist = mutableListOf("User Name", "Enter Username")
     val passwordlist = mutableListOf("Password", "Enter password")
 
@@ -42,8 +43,9 @@ fun Loginpage(onClickLambda: ()->Unit={}) {
         Button(onClick = {
             convertToObject()
             if(validate(user.userName,user.password)) {
-                onClickLambda()
-                saveData(mContext,user.userName,user.password)}
+                saveData(mContext,user.userName,user.password)
+                navController.navigate(route = Screen.Welcome.route)
+            }
             else mToast(mContext)}) {
             Text(text = "SignIn")
         }

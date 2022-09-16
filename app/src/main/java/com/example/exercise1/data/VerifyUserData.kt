@@ -1,6 +1,7 @@
 package com.example.exercise1.data
 
 import android.content.Context
+import android.util.Log
 
 private const val USER_VERIFICATION = "USER_VERIFICATION"
 private const val USER_NAME_KEY = "USER_NAME_KEY"
@@ -21,4 +22,5 @@ fun loadData(context: Context){
     val sharedPreferences = context.getSharedPreferences(USER_VERIFICATION,Context.MODE_PRIVATE)
     user.userName = sharedPreferences.getString(USER_NAME_KEY,"").toString()
     user.password = sharedPreferences.getString(PASSWORD_KEY,"").toString()
+    Log.d("SahilX", "loadData: ${user.userName}")
 }

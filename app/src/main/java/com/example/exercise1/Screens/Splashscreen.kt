@@ -1,5 +1,6 @@
 package com.example.exercise1.Screens
 
+import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.estimateAnimationDurationMillis
@@ -14,10 +15,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.exercise1.ui.theme.Exercise1Theme
+import androidx.navigation.NavController
+import com.example.exercise1.data.loadData
+import com.example.exercise1.data.user
 import kotlinx.coroutines.delay
 
 @Composable
@@ -25,38 +28,31 @@ fun Greeting(name: String) {
     Text(text = "$name", color = Color.Red, fontSize = 60.sp, fontFamily = FontFamily.Cursive)
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    Exercise1Theme {
-        Greeting("Sahil")
-    }
-}
-
-@Composable
-fun Splash(name: String){
+fun Splash(name: String, navController: NavController, context: Context) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Cyan),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     )
     {
-        Animation(name)
+        loadData(context)
+        Greeting(name)
+        LaunchedEffect(key1 = true)
+        {
+            delay(1000L)
+            if (user.userName.isEmpty() && user.password.isEmpty()) {
+                navController.navigate(route = Screen.Loginpage.route){
+                    popUpTo(Screen.Splash.route){inclusive=true}
+                }
+            } else {
+                navController.navigate(route = Screen.Welcome.route){
+                    popUpTo(Screen.Splash.route){inclusive=true}
+                }
+            }
+        }
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
-@Composable
-fun Animation(name: String)
-{
-    var visible by remember { mutableStateOf(true) }
-    AnimatedVisibility(
-        visible = visible,
-        enter = scaleIn(),
-        exit = scaleOut()
-    ) {
-        Greeting(name)
-    }
-}
 
