@@ -1,4 +1,4 @@
-package com.example.exercise1.Screens
+package com.example.exercise1.utility
 
 sealed class Screen(val route: String) {
     object Splash : Screen(route = "splashscreen")

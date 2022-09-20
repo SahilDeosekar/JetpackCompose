@@ -1,6 +1,5 @@
-package com.example.exercise1.Screens
+package com.example.exercise1.view
 
-import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,40 +16,57 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.example.exercise1.data.Products
-import com.example.exercise1.data.user
+import com.example.exercise1.model.Products
+import com.example.exercise1.model.user
 import com.example.exercise1.productList
+import com.example.exercise1.ui.theme.Teal200
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Welcome(navController: NavController, context: Context) {
+fun Home() {
     var newList = productList ?: listOf<Products>()
     ShowAlert()
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
         modifier = Modifier.background(Color.Cyan),
         content = {
-            items(newList.size){ index ->
-                Card(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .padding(5.dp),
+            items(newList.size) { index ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(300.dp)
+                        .padding(5.dp),
                     elevation = 10.dp,
+                    shape = RoundedCornerShape(20.dp)
                 ) {
-                    Image(painter = rememberImagePainter(newList[index].imageUrl),
+                    Image(
+                        painter = rememberImagePainter(newList[index].imageUrl),
                         contentDescription = "",
-                        contentScale = ContentScale.Fit)
+                        contentScale = ContentScale.Fit
+                    )
 
-                    Box(contentAlignment = Alignment.BottomCenter,
+                    Box(
+                        contentAlignment = Alignment.BottomCenter,
                         modifier = Modifier.background(
-                            Brush.verticalGradient(colors = listOf(Color.Transparent,Color.Black),
-                            startY = 400f))) {
-                        Text(text = newList[index].productName, modifier = Modifier.padding(5.dp), color = Color.White)
+                            Brush.verticalGradient(
+                                colors = listOf(Color.Transparent, Color.Black),
+                                startY = 400f
+                            )
+                        )
+                    ) {
+                        Text(
+                            text = newList[index].productName,
+                            modifier = Modifier.padding(5.dp),
+                            color = Color.White,
+                            fontStyle = FontStyle.Italic
+
+                        )
                     }
                 }
             }
@@ -105,28 +121,36 @@ fun Welcome(navController: NavController, context: Context) {
 //    }
 //}
 
-
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ShowAlert() {
     val openDialog = remember { mutableStateOf(true) }
     if (openDialog.value) {
 
         AlertDialog(
+
+            backgroundColor = Teal200,
             onDismissRequest = {
                 openDialog.value = false
             },
             shape = RoundedCornerShape(10.dp),
             title = {
-                Text(text = "WELCOME")
+                Text(
+                    text = "WELCOME",
+                    color = Color.Red,
+                    fontSize = 30.sp,
+                    fontStyle = FontStyle.Italic
+                )
             },
             text = {
-                Text("${user.userName}")
+                Text("${user.userName}", fontFamily = FontFamily.Cursive, fontSize = 40.sp)
             },
             confirmButton = {
                 Button(
                     onClick = {
                         openDialog.value = false
-                    }) { Text("Ok") }
+                    }, shape = RoundedCornerShape(10.dp)
+                ) { Text("Ok") }
             },
         )
     }

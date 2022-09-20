@@ -1,4 +1,4 @@
-package com.example.exercise1.data
+package com.example.exercise1.model
 
 import android.content.Context
 import android.util.Log
