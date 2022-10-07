@@ -11,12 +11,12 @@ import com.example.exercise1.viewmodel.LoginViewModel
 import com.example.exercise1.viewmodel.SplashViewModel
 
 class MainActivity : ComponentActivity() {
+    private val splashViewModel: SplashViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val splashViewModel: SplashViewModel by viewModels()
-        val loginViewModel: LoginViewModel by viewModels()
-        val homeViewModel: HomeViewModel by viewModels()
         setContent {
             Exercise1Theme {
                 getApiData()

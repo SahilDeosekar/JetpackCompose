@@ -1,8 +1,12 @@
 package com.example.exercise1.view
 
+
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -22,16 +26,18 @@ fun Greeting(name: String) {
 
 @Composable
 fun Splash(name: String, navController: NavController, context: Context,splashViewModel: SplashViewModel) {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Cyan),
-        contentAlignment = Alignment.Center,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     )
     {
         Greeting(name)
     }
-    splashViewModel.validateUserData(navController,context, rememberCoroutineScope())
+    Log.d("TAG", "Splash: verified")
+    splashViewModel.validateUserData(navController,context)
 }
 
 
