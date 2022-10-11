@@ -26,6 +26,7 @@ class SplashViewModel: ViewModel() {
                 navController.navigate(route = Screen.Welcome.route) {
                     popUpTo(Screen.Splash.route) { inclusive = true }
                 }
+
             }
         }
     }
