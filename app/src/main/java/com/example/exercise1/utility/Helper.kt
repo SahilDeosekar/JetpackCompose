@@ -31,24 +31,3 @@ fun readJsonFromAssets(context: Context) {
     }
 }
 
-fun getApiData()    {
-
-    val retrofitBuilder = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("https://fakestoreapi.com/")
-        .build()
-        .create(Apiinterface::class.java)
-
-    val retrofitData = retrofitBuilder.getdata()
-
-    retrofitData.enqueue(object : Callback<List<Products>?> {
-        override fun onResponse(call: Call<List<Products>?>, response: Response<List<Products>?>) {
-
-            if (response.body() != null) productList = response.body()!!
-        }
-
-        override fun onFailure(call: Call<List<Products>?>, t: Throwable) {
-
-        }
-    })
-}

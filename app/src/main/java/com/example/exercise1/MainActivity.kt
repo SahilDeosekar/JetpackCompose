@@ -19,7 +19,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Exercise1Theme {
-                getApiData()
                 SetupNavGraph(rememberNavController(), this,splashViewModel,loginViewModel,homeViewModel)
             }
         }
