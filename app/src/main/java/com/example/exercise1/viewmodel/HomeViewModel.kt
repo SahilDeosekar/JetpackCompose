@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.exercise1.model.Products
 import com.example.exercise1.network.getApiData
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel : ViewModel() {
     private val _productListSate: MutableState<List<Products>> = mutableStateOf(listOf())
     val productListSate: State<List<Products>> = _productListSate
 
@@ -15,6 +15,6 @@ class HomeViewModel: ViewModel() {
     val networkStatusState: State<String> = _networkStatusState
 
     fun start() {
-        getApiData(_productListSate,_networkStatusState)
+        getApiData(_productListSate, _networkStatusState)
     }
 }

@@ -11,10 +11,10 @@ import com.example.exercise1.readJsonFromAssets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel: ViewModel() {
+class SplashViewModel : ViewModel() {
 
-    fun validateUserData(navController: NavController,context: Context){
-        viewModelScope.launch{
+    fun validateUserData(navController: NavController, context: Context) {
+        viewModelScope.launch {
             delay(1000)
             loadData(context)
             readJsonFromAssets(context)
@@ -26,7 +26,6 @@ class SplashViewModel: ViewModel() {
                 navController.navigate(route = Screen.Welcome.route) {
                     popUpTo(Screen.Splash.route) { inclusive = true }
                 }
-
             }
         }
     }

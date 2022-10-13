@@ -1,4 +1,4 @@
-package com.example.exercise1
+package com.example.exercise1.utility
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -7,25 +7,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.exercise1.view.Home
 import com.example.exercise1.view.Loginpage
-import com.example.exercise1.utility.Screen
 import com.example.exercise1.view.Splash
-import com.example.exercise1.viewmodel.HomeViewModel
-import com.example.exercise1.viewmodel.LoginViewModel
-import com.example.exercise1.viewmodel.SplashViewModel
 
 @Composable
-fun SetupNavGraph(navController: NavHostController, context: Context,splashViewModel: SplashViewModel,loginViewModel: LoginViewModel,homeViewModel: HomeViewModel) {
+fun SetupNavGraph(navController: NavHostController, context: Context) {
     NavHost(navController = navController, startDestination = Screen.Splash.route)
     {
         composable(
             route = Screen.Splash.route
         ) {
-            Splash("Sahil", navController, context,splashViewModel)
+            Splash("Sahil", navController, context)
         }
         composable(
             route = Screen.Loginpage.route
         ) {
-            Loginpage(navController,context,loginViewModel)
+            Loginpage(navController, context)
         }
         composable(
             route = Screen.Welcome.route

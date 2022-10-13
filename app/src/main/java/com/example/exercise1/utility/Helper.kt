@@ -12,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 lateinit var apihelper: User
-var productList: List<Products>? = null
 var json = ""
 fun convertToObject() {
     val gson = Gson()

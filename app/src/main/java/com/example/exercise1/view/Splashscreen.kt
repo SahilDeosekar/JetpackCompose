@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.exercise1.viewmodel.SplashViewModel
 
@@ -25,19 +25,24 @@ fun Greeting(name: String) {
 }
 
 @Composable
-fun Splash(name: String, navController: NavController, context: Context,splashViewModel: SplashViewModel) {
+fun Splash(
+    name: String,
+    navController: NavController,
+    context: Context,
+    splashViewModel: SplashViewModel = viewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Cyan),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
+    ) {
         Greeting(name)
     }
     Log.d("TAG", "Splash: verified")
-    splashViewModel.validateUserData(navController,context)
+    splashViewModel.validateUserData(navController, context)
+
 }
 
 

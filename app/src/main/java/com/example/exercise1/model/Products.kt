@@ -8,5 +8,11 @@ data class Products(
     var productName: String,
 
     @SerializedName("image")
-    var imageUrl: String
-    )
+    var imageUrl: String,
+
+    @SerializedName("price")
+    var cost: String,
+
+    @SerializedName("description")
+    var desc: String
+)

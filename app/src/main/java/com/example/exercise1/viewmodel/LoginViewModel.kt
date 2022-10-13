@@ -30,7 +30,7 @@ class LoginViewModel : ViewModel() {
         if (validate(user.userName, user.password)) {
             saveData(mContext, user.userName, user.password)
             navController.navigate(route = Screen.Welcome.route) {
-                popUpTo(Screen.Loginpage.route) {
+                popUpTo(Screen.Welcome.route) {
                     inclusive = true
                 }
             }
@@ -58,14 +58,13 @@ class LoginViewModel : ViewModel() {
         user.password = _inputpassword.value
     }
 
-    fun passwordvisibility(): Boolean{
+    fun passwordvisibility(): Boolean {
         return passwordVisible.value
     }
 
-    fun passwordchange(){
-        _passwordVisible.value=!_passwordVisible.value
+    fun passwordchange() {
+        _passwordVisible.value = !_passwordVisible.value
     }
-
 
 
 }
