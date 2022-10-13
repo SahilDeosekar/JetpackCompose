@@ -11,6 +11,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -48,6 +50,20 @@ fun Home(homeScreenViewModel: HomeViewModel = viewModel()) {
                 navigationIcon = {
                     IconButton(onClick = { activity?.finish() }) {
                         Icon(Icons.Filled.ArrowBack, "backIcon")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Filled.ShoppingCart,
+                            contentDescription = ""
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Filled.Favorite,
+                            contentDescription = ""
+                        )
                     }
                 },
                 backgroundColor = MaterialTheme.colors.primary,
@@ -104,7 +120,7 @@ fun Home(homeScreenViewModel: HomeViewModel = viewModel()) {
                                             text = homeScreenViewModel.productListSate.value[index].productName,
                                             modifier = Modifier.padding(5.dp),
                                             color = Color.White,
-                                            textAlign= TextAlign.Center,
+                                            textAlign = TextAlign.Center,
                                             fontStyle = FontStyle.Italic
 
                                         )
@@ -112,7 +128,7 @@ fun Home(homeScreenViewModel: HomeViewModel = viewModel()) {
                                             text = homeScreenViewModel.productListSate.value[index].cost + "$",
                                             modifier = Modifier.padding(5.dp),
                                             color = Color.White,
-                                            textAlign= TextAlign.Center,
+                                            textAlign = TextAlign.Center,
                                             fontStyle = FontStyle.Italic
 
                                         )
