@@ -38,7 +38,7 @@ class LoginViewModel : ViewModel() {
     }
 
     private fun mToast(context: Context) {
-        Toast.makeText(context, "Signin Failed", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Incorrect Login Credentials", Toast.LENGTH_LONG).show()
     }
 
 

@@ -30,3 +30,5 @@ fun readJsonFromAssets(context: Context) {
     }
 }
 
+var _description: Products = Products("","","","")
+
