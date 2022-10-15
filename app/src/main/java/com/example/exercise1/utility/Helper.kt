@@ -3,13 +3,8 @@ package com.example.exercise1
 import android.content.Context
 import android.util.Log
 import com.example.exercise1.model.*
-import com.example.exercise1.utility.Apiinterface
 import com.google.gson.Gson
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 lateinit var apihelper: User
 var json = ""
@@ -30,5 +25,5 @@ fun readJsonFromAssets(context: Context) {
     }
 }
 
-var _description: Products = Products("","","","")
+var _description: Products = Products("", "", "", "")
 
